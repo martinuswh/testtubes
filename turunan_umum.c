@@ -25,7 +25,7 @@ double deriveTrig(double (*f)(double t), double x0)
     return R*C*((y2 - y1) / delta);
 };
 
-double fungsi1(double t, double T, double A)        //triangle
+double triangluarFunc(double t, double T, double A)        //triangle
 {
     int region;
     region=t/(T/2);
@@ -43,7 +43,7 @@ double fungsi1(double t, double T, double A)        //triangle
     };
 };
 
-double fungsi2(double t, double T, double A)        //kotak
+double squareFunc(double t, double T, double A)        //kotak
 {
     int region;
     region=t/(T/2);
@@ -163,14 +163,14 @@ int main(void)
                 for(i=1;i<1000;i++)
                 {
                     t=t+dt;
-                    Vi[i] = fungsi1(t, T,A);
+                    Vi[i] = triangluarFunc(t, T,A);
                     printToFile(fp1, i, Vi[i]);
                 };
 
                 t=0;
                 for(i=0;i<1000;i++)
                 {
-                    Vo[i] = derive(fungsi1, t, R, C);
+                    Vo[i] = derive(triangluarFunc, t, R, C);
                     printToFile(fp2, i, Vo[i]);
                     t=t+dt;
                 };
@@ -185,14 +185,14 @@ int main(void)
                 for(i=1;i<1000;i++)
                 {
                     t=t+dt;
-                    Vi[i] = fungsi2(t, T,A);
+                    Vi[i] = squareFunc(t, T,A);
                     printToFile(fp1, i, Vi[i]);
                 };
 
                 t=0;
                 for(i=0;i<1000;i++)
                 {
-                    Vo[i] = derive(fungsi2, t, R, C);
+                    Vo[i] = derive(squareFunc, t, R, C);
                     printToFile(fp2, i, Vo[i]);
                     t=t+dt;
                 };
