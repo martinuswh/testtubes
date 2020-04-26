@@ -98,6 +98,11 @@ def runSimDiff():
         os.system(file_name +A+" "+T+" "+R+" "+C)
         print(file_name, A, T, R, C)         #debug
         x, y = np.loadtxt("output_voltage_sinus.csv",  unpack=True, delimiter=",")
+    elif (combo_value == "Sine" and combo_value2 == "Output Current"):
+        file_name = "diff_sinus "
+        os.system(file_name +A+" "+T+" "+R+" "+C)
+        print(file_name, A, T, R, C)         #debug
+        x, y = np.loadtxt("output_current_sinus.csv",  unpack=True, delimiter=",")
     elif (combo_value == "Cosine" and combo_value2 == "Input Voltage"):
         file_name = "diff_cosinus "
         os.system(file_name +A+" "+T+" "+R+" "+C)
@@ -108,6 +113,11 @@ def runSimDiff():
         os.system(file_name +A+" "+T+" "+R+" "+C)
         print(file_name, A, T, R, C)         #debug
         x, y = np.loadtxt("output_voltage_cosinus.csv",  unpack=True, delimiter=",")
+    elif (combo_value == "Cosine" and combo_value2 == "Output Current"):
+        file_name = "diff_cosinus "
+        os.system(file_name +A+" "+T+" "+R+" "+C)
+        print(file_name, A, T, R, C)         #debug
+        x, y = np.loadtxt("output_current_cosinus.csv",  unpack=True, delimiter=",")
     elif (combo_value == "Triangle" and combo_value2 == "Input Voltage"):
         file_name = "diff_triangular "
         os.system(file_name +A+" "+T+" "+R+" "+C)
@@ -118,6 +128,11 @@ def runSimDiff():
         os.system(file_name +A+" "+T+" "+R+" "+C)
         print(file_name, A, T, R, C)         #debug
         x, y = np.loadtxt("output_voltage_triangular.csv",  unpack=True, delimiter=",")
+    elif (combo_value == "Triangle" and combo_value2 == "Output Current"):
+        file_name = "diff_triangular "
+        os.system(file_name +A+" "+T+" "+R+" "+C)
+        print(file_name, A, T, R, C)         #debug
+        x, y = np.loadtxt("output_current_triangular.csv",  unpack=True, delimiter=",")
     elif (combo_value == "Square" and combo_value2 == "Input Voltage"):
         file_name = "diff_square "
         os.system(file_name +A+" "+T+" "+R+" "+C)
@@ -128,6 +143,11 @@ def runSimDiff():
         os.system(file_name +A+" "+T+" "+R+" "+C)
         print(file_name, A, T, R, C)         #debug
         x, y = np.loadtxt("output_voltage_square.csv",  unpack=True, delimiter=",")
+    elif (combo_value == "Square" and combo_value2 == "Output Current"):
+        file_name = "diff_square "
+        os.system(file_name +A+" "+T+" "+R+" "+C)
+        print(file_name, A, T, R, C)         #debug
+        x, y = np.loadtxt("output_current_square.csv",  unpack=True, delimiter=",")
 
     plt.plot(x,y)
     plt.xlabel("Time (s)")
@@ -146,13 +166,13 @@ def runSimDiff():
 #MAIN
 window = tk.Tk()
 window.title("Tugas Besar PMC - Kelompok 2")
-window.geometry("1050x500")
+window.geometry("900x650")
 window.resizable(width=True, height=True)
 
-lbl_judul = tk.Label(text="RC AND DIFFERENTIATOR CIRCUIT SIMULATOR", bg="white")
+lbl_judul = tk.Label(text="RC AND DIFFERENTIATOR CIRCUIT SIMULATOR", font="Tahoma 18 bold", bg="white")
 lbl_judul.grid(row=0, columnspan=10)
 
-lbl_penjelasan = tk.Label(text="penjelasan bla bla bla", bg="white")
+lbl_penjelasan = tk.Label(text="by Group 2 of EL2008\nThis simulator is a simulator for simulating RC circuits and first-order differentiator op-amp circuits.\nThe form on the left is the form to do RC simulation while the right form is to simulate the differentiator circuit.\nTo conduct a simulation, the user immediately fills in all the required data on each form then presses the submit button and the simulation will run.\nEnjoy simulating!", bg="white")
 lbl_penjelasan.grid(columnspan=10, row=1, pady=10)
 
 photo1 = tk.PhotoImage(file="rsz_rangkaian1.png")
@@ -197,11 +217,11 @@ pict_square.grid(row=3, column=8, columnspan=2)
 
 #Gap
 lbl_gap = tk.Label(bg="white")
-lbl_gap.grid(column=0, row=4, columnspan=10, pady=20)
+lbl_gap.grid(column=0, row=4, columnspan=10, pady=0)
 
 #RC Circuit
-lbl_headingRC = tk.Label(text="RC Circuit", bg="white")
-lbl_headingRC.grid(column=0, row=5, columnspan=5)
+lbl_headingRC = tk.Label(text="RC Circuit", font="Tahoma 12 bold underline", bg="white")
+lbl_headingRC.grid(column=0, row=5, columnspan=5, pady=10)
 
 #Combobox 1 RC
 lbl_combo1_RC = tk.Label(text="Circuit Type = ", bg="white")
@@ -258,8 +278,8 @@ lbl_gap2 = tk.Label(bg="white")
 lbl_gap2.grid(column=4, row=6, columnspan=2, rowspan=7)
 
 #Differentiator
-lbl_headingDiff = tk.Label(text="Differentiator Circuit", bg="white")
-lbl_headingDiff.grid(column=6, row=5, columnspan=5)
+lbl_headingDiff = tk.Label(text="Differentiator Circuit", font="Tahoma 12 bold underline", bg="white")
+lbl_headingDiff.grid(column=6, row=5, columnspan=5, pady=10)
 
 #Combobox 1 Diff
 lbl_combo1_diff = tk.Label(text="Input Wave = ", bg="white")
@@ -271,7 +291,7 @@ combo1_diff.current(0)
 #Combobox 2 Diff
 lbl_combo2_diff = tk.Label(text="Variable  = ", bg="white")
 lbl_combo2_diff.grid(column=6, row=7, columnspan=2)
-combo2_diff = ttk.Combobox(window, values=["Input Voltage", "Output Voltage"])
+combo2_diff = ttk.Combobox(window, values=["Input Voltage", "Output Voltage", "Output Current"])
 combo2_diff.grid(column=8, row=7)
 combo2_diff.current(0)
 

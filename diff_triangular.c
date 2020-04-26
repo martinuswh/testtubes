@@ -52,9 +52,10 @@ int main(int argc, char *argv[])
     R = strtod(argv[3], &eptr);
     C = strtod(argv[4], &eptr);
 
-    FILE *fp1, *fp2;
+    FILE *fp1, *fp2, *fp3;
     fp1 = fopen("input_voltage_triangular.csv", "w+");
     fp2 = fopen("output_voltage_triangular.csv", "w+");
+    fp3 = fopen("output_current_triangular.csv", "w+");
 
     Vi[0]=0;
     fprintf(fp1, "%f,", 0);
@@ -76,11 +77,13 @@ int main(int argc, char *argv[])
     {
         Vo[i] = derive(triangluarFunc, t, R, C);
         printToFile(fp2, i, Vo[i]);
+        printToFile(fp3, i, (Vo[i]/R));
         t=t+dt;
     };
 
     fclose(fp1);
     fclose(fp2);
+    fclose(fp3);
 
     return 0;
 };

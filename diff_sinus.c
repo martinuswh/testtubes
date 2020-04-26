@@ -34,9 +34,10 @@ int main(int argc, char *argv[])
     R = strtod(argv[3], &eptr);
     C = strtod(argv[4], &eptr);
 
-    FILE *fp1, *fp2;
+    FILE *fp1, *fp2, *fp3;
     fp1 = fopen("input_voltage_sinus.csv", "w+");
     fp2 = fopen("output_voltage_sinus.csv", "w+");
+    fp3 = fopen("output_current_sinus.csv", "w+");
 
     Vi[0]=0;
     angular_freq= 2.0*pi/T;
@@ -55,11 +56,13 @@ int main(int argc, char *argv[])
     {
         Vo[i] = A*deriveTrig(sin, angular_freq*t);
         printToFile(fp2, i, Vo[i]);
+        printToFile(fp3, i, (Vo[i]/R));
         t=t+dt;
     };
 
     fclose(fp1);
     fclose(fp2);
+    fclose(fp3);
 
     return 0;
 };
