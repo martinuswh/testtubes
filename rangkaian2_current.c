@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 
-void rangkaian2a (double vin,double r1,double r2,double c){
+void rangkaian2 (double vin,double r1,double r2,double c){
     double t,i,vc;
     int j;
     double dt = 0.001;
@@ -33,7 +33,7 @@ int main(int argc,char* argv[])
     r2 = strtod(argv[3], &eptr);
     c = strtod(argv[4], &eptr);
 
-    rangkaian2a(vi, r1, r2, c);
+    rangkaian2(vi, r1, r2, c);
 
     return 0;
 }

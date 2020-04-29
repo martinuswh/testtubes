@@ -1,4 +1,8 @@
 //DIFFERENTIATOR SIMULATOR FOR SQUARE WAVES INPUT
+/*
+    Program akan menerima input berupa command line argument yang diinvoke oleh file top_simulator.py
+    Output program adalh file input_voltage_square.csv, output_voltage_square.csv, dan output_current_square.csv
+*/
 
 #include <stdio.h>
 #include <math.h>
@@ -14,7 +18,7 @@ double derive(double (*f)(double t, double T, double A), double x0, double R, do
     double x2 = x0 + delta;
     double y1 = f(x1,T,A);
     double y2 = f(x2,T,A);
-    return R*C*((y2 - y1) / delta);
+    return -R*C*((y2 - y1) / delta);
 };
 
 double squareFunc(double t, double T, double A)        //kotak
@@ -57,7 +61,6 @@ int main(int argc, char *argv[])
     fp2 = fopen("output_voltage_square.csv", "w+");
     fp3 = fopen("output_current_square.csv", "w+");
 
-    printf("Gelombang yang dipilih merupakan gelombang kotak, tegangan input dan output akan muncul pada file.csv\n");
     Vi[0]=A;
     fprintf(fp1, "%f,", 0);
     fprintf(fp1, "%f\n", Vi[0]);

@@ -4,7 +4,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-void rangkaian3(double vi,double r1,double r2,double c)
+void rangkaian4(double vi,double r1,double r2,double c)
 {
     double t, vo[1000], dt=0.001, timeconstant=r1*r2*c/(r1+r2);
     int i;
@@ -33,7 +33,7 @@ int main(int argc,char* argv[])
     r2 = strtod(argv[3], &eptr);
     c = strtod(argv[4], &eptr);
 
-    rangkaian3(vi, r1, r2, c);
+    rangkaian4(vi, r1, r2, c);
 
     return 0;
 }

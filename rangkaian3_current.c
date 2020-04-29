@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void rangkaian2b (double vin,double r1,double r2,double c){
+void rangkaian3 (double vin,double r1,double r2,double c){
     double i,vc,t;
     double dt = 0.00001;
     FILE *fp;
@@ -33,7 +33,7 @@ int main(int argc,char* argv[])
     r2 = strtod(argv[3], &eptr);
     c = strtod(argv[4], &eptr);
 
-    rangkaian2b(vi, r1, r2, c);
+    rangkaian3(vi, r1, r2, c);
 
     return 0;
 }

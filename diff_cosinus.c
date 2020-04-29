@@ -1,4 +1,8 @@
 //DIFFERENTIATOR SIMULATOR FOR COSINUSOIDAL WAVES INPUT
+/*
+    Program akan menerima input berupa command line argument yang diinvoke oleh file top_simulator.py
+    Output program adalah file input_voltage_cosinus.csv, output_voltage_cosinus.csv, dan output_current_cosinus.csv
+*/
 
 #include <stdio.h>
 #include <math.h>
@@ -14,7 +18,7 @@ double deriveTrig(double (*f)(double t), double x0)
     double x2 = x0 +delta;
     double y1 = f(x1);
     double y2 = f(x2);
-    return R*C*((y2 - y1) / delta);
+    return ((y2 - y1) / delta);
 };
 
 void printToFile(FILE *fp, int x, double y)
@@ -54,7 +58,7 @@ int main(int argc, char *argv[])
     t=0;
     for(i=0;i<20000;i++)
     {
-        Vo[i] = A*deriveTrig(cos, angular_freq*t);
+        Vo[i] = -A*angular_freq*R*C*deriveTrig(cos, angular_freq*t);
         printToFile(fp2, i, Vo[i]);
         printToFile(fp3, i, (Vo[i]/R));
         t=t+dt;
